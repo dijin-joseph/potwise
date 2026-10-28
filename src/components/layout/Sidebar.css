@@ -1,0 +1,218 @@
+/* ========================================
+   DESKTOP SIDEBAR
+======================================== */
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  min-height: 100vh;
+  padding: 20px 16px;
+  background-color: rgb(11, 39, 35);
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+/* Logo and hamburger header */
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-image {
+  display: block;
+  width: 160px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Hamburger hidden on desktop */
+
+.sidebar-hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: none;
+  border-radius: 10px;
+  background-color: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.sidebar-hamburger:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.sidebar-hamburger:active {
+  opacity: 0.7;
+}
+
+.sidebar-hamburger:focus-visible {
+  outline: 2px solid #34d399;
+  outline-offset: 2px;
+}
+
+/* Divider below logo */
+
+.sidebar-divider {
+  width: 100%;
+  margin: 24px 0 0;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Navigation */
+
+.menu-bar {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-top: 24px;
+}
+
+.menu-bar ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu-bar li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 10px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.menu-bar li:hover {
+  background-color: rgb(13, 139, 96);
+}
+
+.menu-bar li:active {
+  opacity: 0.7;
+}
+
+/* Settings section */
+
+.sidebar-settings {
+  margin-top: auto;
+  padding-bottom: 10px;
+}
+
+.sidebar-settings-divider {
+  width: 100%;
+  margin: 0 0 16px;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* ========================================
+   TABLET AND MOBILE
+   1023px and below
+======================================== */
+
+@media (max-width: 1023px) {
+  .sidebar-menu {
+    width: 100%;
+    min-height: auto;
+    padding: 10px 16px;
+  }
+
+  /* Hamburger on left, logo beside it */
+
+  .sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    min-height: 44px;
+  }
+
+  .sidebar-hamburger {
+    display: flex;
+  }
+
+  .logo-image {
+    width: 135px;
+  }
+
+  /* Hide divider under logo */
+
+  .sidebar-menu > .sidebar-divider {
+    display: none;
+  }
+
+  /* Navigation hidden until hamburger is clicked */
+
+  .menu-bar {
+    display: none;
+    flex: none;
+    width: 100%;
+    margin-top: 12px;
+  }
+
+  .menu-bar.menu-open {
+    display: flex;
+  }
+
+  .menu-bar ul {
+    gap: 6px;
+  }
+
+  .menu-bar li {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  /* Settings appears below navigation */
+
+  .sidebar-settings {
+    margin-top: 12px;
+    padding-bottom: 0;
+  }
+
+  .sidebar-settings-divider {
+    margin-bottom: 12px;
+  }
+}
+
+/* ========================================
+   SMALL MOBILE
+   400px and below
+======================================== */
+
+@media (max-width: 400px) {
+  .sidebar-menu {
+    padding: 10px 12px;
+  }
+
+  .sidebar-header {
+    gap: 8px;
+  }
+
+  .sidebar-hamburger {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logo-image {
+    width: 120px;
+  }
+
+  .menu-bar li {
+    padding: 11px 10px;
+    font-size: 13px;
+  }
+}

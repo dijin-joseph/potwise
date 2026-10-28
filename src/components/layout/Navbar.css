@@ -1,0 +1,214 @@
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 100px;
+  padding: 0 24px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  box-sizing: border-box;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  min-width: 0;
+}
+
+/* Left section */
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  gap: 16px;
+}
+
+/* Search */
+
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #64748b;
+  pointer-events: none;
+}
+
+.input-search {
+  width: 100%;
+  height: 42px;
+  padding: 0 14px 0 42px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background-color: #f8fafc;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+.input-search:focus {
+  outline: none;
+}
+
+/* Right section */
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+/* Local storage */
+
+.storage-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background-color: #ecfdf5;
+  color: #064e3b;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.storage-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgb(13, 139, 96);
+}
+
+/* Divider */
+
+.navbar-divider {
+  width: 1px;
+  height: 32px;
+  background-color: #e5e7eb;
+}
+
+/* Settings */
+
+/* Settings */
+
+.settings-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.settings-icon {
+  color: #0b2723;
+}
+
+.settings-container:hover {
+  background-color: rgb(13, 139, 96);
+}
+
+.settings-container:hover .settings-icon {
+  color: white;
+}
+
+.settings-container:active .settings-icon {
+  opacity: 0.7;
+}
+/* Hamburger */
+
+.hamburger-icon {
+  display: none;
+  color: #0b2723;
+  flex-shrink: 0;
+}
+
+/* Tablet */
+
+@media (max-width: 1023px) {
+  .navbar-menu {
+    padding: 0 16px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 767px) {
+  .navbar-menu {
+    min-height: 64px;
+    padding: 0 12px;
+  }
+
+  .hamburger-icon {
+    display: block;
+  }
+
+  .navbar-left {
+    gap: 12px;
+  }
+
+  .navbar-right {
+    gap: 12px;
+  }
+
+  .storage-text,
+  .navbar-divider {
+    display: none;
+  }
+
+  .storage-indicator {
+    padding: 10px;
+  }
+
+  .search-container {
+    max-width: none;
+  }
+
+  .input-search {
+    height: 40px;
+    font-size: 13px;
+  }
+}
+
+.add-pot-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background-color: rgb(13, 139, 96);
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.add-pot-btn:hover {
+  opacity: 0.7;
+}
+
+.add-pot-btn:active {
+  opacity: 0.5;
+}
+
+/* Small mobile screens */
+
+@media (max-width: 400px) {
+  .storage-indicator {
+    display: none;
+  }
+}

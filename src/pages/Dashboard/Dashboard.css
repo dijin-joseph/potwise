@@ -1,0 +1,451 @@
+.dashboard-container {
+  width: 100%;
+  min-width: 0;
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 15px;
+}
+
+.dashboard-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dashboard-heading h1 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.dashboard-heading p {
+  margin: 0;
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* Month selector */
+
+.calendar-container {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: 44px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background-color: white;
+  overflow: hidden;
+}
+
+.calendar-container button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+  color: #334155;
+}
+
+.calendar-container span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 18px;
+  border-left: 1px solid #e5e7eb;
+  border-right: 1px solid #e5e7eb;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.previous-month-btn {
+  cursor: pointer;
+}
+
+.previous-month-btn:hover {
+  background-color: rgb(13, 139, 96);
+  color: white;
+}
+
+.previous-month-btn:active {
+  opacity: 0.7;
+}
+
+.next-month-btn {
+  cursor: pointer;
+}
+
+.next-month-btn:hover {
+  background-color: rgb(13, 139, 96);
+  color: white;
+}
+
+.next-month-btn:active {
+  opacity: 0.7;
+}
+
+/* Mobile */
+
+.dashboard-card-container {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 15px;
+}
+
+.dashboard-cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  min-height: 150px;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  box-sizing: border-box;
+}
+
+.dashboard-cards:hover {
+  border-color: rgb(13, 139, 96);
+}
+
+/* Card icon and text layout */
+
+.icon-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  width: 100%;
+}
+
+/* Icon background */
+
+.card-icon-background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 12px;
+}
+
+.card-icon-background.green {
+  background-color: #d1fae5;
+  color: #059669;
+}
+
+.card-icon-background.orange {
+  background-color: #ffedd5;
+  color: #ea580c;
+}
+
+.card-icon-background.blue {
+  background-color: #dbeafe;
+  color: #2563eb;
+}
+
+.card-icon-background.purple {
+  background-color: #ede9fe;
+  color: #7c3aed;
+}
+
+/* Card text */
+
+.card-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  min-width: 0;
+  text-align: left;
+}
+
+.card-label {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.card-amount {
+  color: #111827;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.card-status {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+/* Welcome to PotWise section */
+.start-saving-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  min-height: 430px;
+  margin: 30px 15px;
+  padding: 40px 24px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Wallet icon container */
+
+.wallet-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  height: 64px;
+  background-color: #d1fae5;
+  border-radius: 50%;
+}
+
+.wallet-icon {
+  color: #059669;
+}
+
+/* Welcome heading */
+
+.start-saving-container h2 {
+  margin: 0;
+  color: #111827;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* Welcome description */
+
+.welcome-description {
+  max-width: 580px;
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Setup income button */
+
+.setup-income-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 12px 22px;
+  background-color: rgb(13, 139, 96);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.setup-income-btn:hover {
+  opacity: 0.7;
+}
+
+.setup-income-btn:active {
+  opacity: 0.5;
+}
+
+/* Bottom note */
+
+.welcome-note {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+/* ==================================
+   TABLET: 768px - 1199px
+================================== */
+
+@media (max-width: 1199px) {
+  .dashboard-card-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .dashboard-cards {
+    min-height: 130px;
+    padding: 18px;
+  }
+
+  .card-amount {
+    font-size: 24px;
+  }
+
+  .start-saving-container {
+    min-height: 350px;
+    margin-top: 24px;
+  }
+}
+
+/* ==================================
+   MOBILE: 767px and below
+================================== */
+
+@media (max-width: 767px) {
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin: 16px 12px;
+  }
+
+  .dashboard-heading h1 {
+    font-size: 24px;
+  }
+
+  .dashboard-heading p {
+    font-size: 13px;
+  }
+
+  /* Month selector */
+
+  .calendar-container {
+    height: 40px;
+  }
+
+  .calendar-container button {
+    width: 40px;
+  }
+
+  .calendar-container span {
+    padding: 0 12px;
+    font-size: 13px;
+  }
+
+  /* Financial cards */
+
+  .dashboard-card-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 12px;
+  }
+
+  .dashboard-cards {
+    min-height: 145px;
+    padding: 14px;
+  }
+
+  .icon-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .card-icon-background {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+  }
+
+  .card-text-container {
+    gap: 4px;
+  }
+
+  .card-label {
+    font-size: 11px;
+  }
+
+  .card-amount {
+    font-size: 23px;
+  }
+
+  .card-status {
+    font-size: 10px;
+  }
+
+  /* Welcome section */
+
+  .start-saving-container {
+    min-height: 320px;
+    margin: 20px 12px;
+    padding: 32px 18px;
+    gap: 14px;
+  }
+
+  .wallet-container {
+    width: 56px;
+    height: 56px;
+  }
+
+  .start-saving-container h2 {
+    font-size: 20px;
+  }
+
+  .welcome-description {
+    font-size: 13px;
+  }
+
+  .welcome-note {
+    font-size: 11px;
+  }
+}
+
+/* ==================================
+   SMALL MOBILE: 400px and below
+================================== */
+
+@media (max-width: 400px) {
+  .dashboard-card-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin: 10px;
+  }
+
+  .dashboard-cards {
+    min-height: 145px;
+    padding: 10px;
+  }
+
+  .card-icon-background {
+    width: 38px;
+    height: 38px;
+  }
+
+  .card-label {
+    font-size: 10px;
+  }
+
+  .card-amount {
+    font-size: 21px;
+  }
+
+  .card-status {
+    font-size: 10px;
+  }
+
+  .start-saving-container {
+    margin: 16px 10px;
+    padding: 28px 14px;
+  }
+
+  .setup-income-btn {
+    max-width: 100%;
+    padding: 12px 14px;
+    font-size: 12px;
+  }
+}
