@@ -1,4 +1,5 @@
-import "./IncomeSetup.css";
+import "./IncomeCategorySelection_1.css";
+import { useState } from "react";
 import {
   BriefcaseBusiness,
   UserRound,
@@ -12,6 +13,7 @@ import {
   Ellipsis,
   ChevronRight,
 } from "lucide-react";
+import IncomeDetails_2 from "./IncomeDetails_2";
 
 const incomeCategories = [
   {
@@ -96,12 +98,12 @@ const incomeCategories = [
   },
 ];
 
-export default function IncomeSetup() {
+export default function IncomeCategorySelection_1() {
+  const [selectedCategory, setSelectedCategory] = useState(null);
   return (
     <div className="income-setup-page">
       <section className="income-intro">
         <h1>Set up your income</h1>
-        <p>Tell us where your income comes from.</p>
       </section>
       <section className="income-category-section">
         <div className="income-progress">
@@ -109,49 +111,75 @@ export default function IncomeSetup() {
             <span>1</span>
             <p>Income category</p>
           </div>
-          <div className="progress-line"></div>
-          <div className="progress-step">
+          <div
+            className={`progress-line ${
+              selectedCategory !== null ? "active" : ""
+            }`}
+          ></div>
+          <div
+            className={`progress-step ${
+              selectedCategory !== null ? "active" : ""
+            }`}
+          >
             <span>2</span>
             <p>Income Details</p>
           </div>
-          <div className="progress-line"></div>
+          <div
+            className={`progress-line ${
+              selectedCategory !== null ? "half-active" : ""
+            }`}
+          ></div>
           <div className="progress-step">
             <span>3</span>
             <p>Review & Complete</p>
           </div>
         </div>
-        <div className="income-category-header">
-          <h2>Select an income category</h2>
-          <p>
-            Choose one type of income you receive. You can add multiple income
-            sources later.
-          </p>
-        </div>
-        <div className="income-category-grid">
-          {incomeCategories.map((category) => {
-            const Icon = category.icon;
-            return (
-              <div className="income-category-card" key={category.id}>
-                <span
-                  className="income-category-icon"
-                  style={{
-                    backgroundColor: category.iconBg,
-                    color: category.iconColor,
-                  }}
-                >
-                  <Icon size={28} />
-                </span>
-                <div className="income-category-content">
-                  <h3>{category.name}</h3>
-                  <p>{category.description}</p>
-                </div>
-                <div>
-                  <ChevronRight />
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        {selectedCategory !== null ? (
+          <IncomeDetails_2
+            selectedCategory={selectedCategory}
+            onBack={() => setSelectedCategory(null)}
+          />
+        ) : (
+          <>
+            <div className="income-category-header">
+              <h2>Select an income category</h2>
+              <p>
+                Choose one type of income you receive. You can add multiple
+                income sources later.
+              </p>
+            </div>
+
+            <div className="income-category-grid">
+              {incomeCategories.map((category) => {
+                const Icon = category.icon;
+                return (
+                  <div
+                    className="income-category-card"
+                    key={category.id}
+                    onClick={() => setSelectedCategory(category)}
+                  >
+                    <span
+                      className="income-category-icon"
+                      style={{
+                        backgroundColor: category.iconBg,
+                        color: category.iconColor,
+                      }}
+                    >
+                      <Icon size={28} />
+                    </span>
+                    <div className="income-category-content">
+                      <h3>{category.name}</h3>
+                      <p>{category.description}</p>
+                    </div>
+                    <div>
+                      <ChevronRight />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </>
+        )}
       </section>
     </div>
   );

@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from "react-router";
 import Navbar from "./components/layout/Navbar.jsx";
 import Sidebar from "./components/layout/Sidebar.jsx";
 import Dashboard from "./pages/Dashboard/Dashboard.jsx";
-import IncomeSetup from "./pages/IncomeSetup/IncomeSetup.jsx";
+import IncomeSetup from "./pages/IncomeSetup/IncomeCategorySelection_1.jsx";
 
 function App() {
   return (
