@@ -103,6 +103,12 @@ const incomeCategories = [
 export default function IncomeCategorySelection_1() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [currentStep, setCurrentStep] = useState(1);
+  const [incomeSources, setIncomeSources] = useState([]);
+
+  function handleSaveIncome(incomeData) {
+    setIncomeSources((previousSources) => [...previousSources, incomeData]);
+    setCurrentStep(3);
+  }
 
   return (
     <div className="income-setup-page">
@@ -195,7 +201,7 @@ export default function IncomeCategorySelection_1() {
           <IncomeDetails_2
             selectedCategory={selectedCategory}
             onBack={() => setCurrentStep(1)}
-            onNext={() => setCurrentStep(3)}
+            onNext={handleSaveIncome}
           />
         ) : (
           /* STEP 3: Review income */

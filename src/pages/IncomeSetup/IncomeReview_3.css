@@ -1,0 +1,39 @@
+.review-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px 10px 0 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+.review-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.income-title-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  background-color: rgb(220, 252, 231);
+  color: #059669;
+}
+
+.income-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 0 0 10px 10px;
+}
+
+.review-container > .income-container {
+  margin-top: 0;
+}

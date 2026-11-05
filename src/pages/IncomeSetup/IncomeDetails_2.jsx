@@ -9,6 +9,17 @@ export default function IncomeDetails_2({ selectedCategory, onBack, onNext }) {
   const [frequency, setFrequency] = useState("Monthly");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const incomeData = {
+    sourceName,
+    incomeAmount,
+    frequency,
+    startDate,
+    endDate,
+  };
+
+  function handleContinue() {
+    onNext(incomeData);
+  }
 
   return (
     <>
@@ -34,7 +45,6 @@ export default function IncomeDetails_2({ selectedCategory, onBack, onNext }) {
         </button>
       </div>
 
-      {/* We'll build the form together here */}
       <form className="income-details-form">
         <div className="income-form-field">
           <label htmlFor="sourceName">Source name (Optional)</label>
@@ -108,7 +118,7 @@ export default function IncomeDetails_2({ selectedCategory, onBack, onNext }) {
             <ArrowLeft size={16} />
             Back
           </button>
-          <button type="button" className="save-btn" onClick={onNext}>
+          <button type="button" className="save-btn" onClick={handleContinue}>
             <ArrowRight size={16} />
             Save & Continue
           </button>
