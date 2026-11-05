@@ -26,14 +26,11 @@
   color: #059669;
 }
 
-.income-container {
+.income-review-content {
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
   padding: 20px;
+  margin: 0;
   border-radius: 0 0 10px 10px;
-}
-
-.review-container > .income-container {
-  margin-top: 0;
 }

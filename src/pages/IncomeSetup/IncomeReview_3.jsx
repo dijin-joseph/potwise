@@ -18,7 +18,7 @@ export default function IncomeReview_3() {
         </div>
       </div>
 
-      <div className="income-container">
+      <div className="income-review-content">
         <h1>Hello</h1>
       </div>
     </div>
