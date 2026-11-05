@@ -19,7 +19,20 @@ export default function IncomeReview_3() {
       </div>
 
       <div className="income-review-content">
-        <h1>Hello</h1>
+        <h2>Your Income Sources</h2>
+        <div className="income-review-container">
+          <ul>
+            <li>Income Source</li>
+            <li>Total Income</li>
+            <li>Frequency</li>
+            <li>Start Date</li>
+            <li>End Date</li>
+            <li>
+              <button>Edit</button>
+              <button>Edit</button>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
