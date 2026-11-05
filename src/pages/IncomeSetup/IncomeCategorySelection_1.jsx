@@ -1,5 +1,8 @@
 import "./IncomeCategorySelection_1.css";
 import { useState } from "react";
+import IncomeReview_3 from "./IncomeReview_3";
+import IncomeDetails_2 from "./IncomeDetails_2";
+
 import {
   BriefcaseBusiness,
   UserRound,
@@ -13,7 +16,6 @@ import {
   Ellipsis,
   ChevronRight,
 } from "lucide-react";
-import IncomeDetails_2 from "./IncomeDetails_2";
 
 const incomeCategories = [
   {
@@ -100,46 +102,49 @@ const incomeCategories = [
 
 export default function IncomeCategorySelection_1() {
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [currentStep, setCurrentStep] = useState(1);
+
   return (
     <div className="income-setup-page">
       <section className="income-intro">
         <h1>Set up your income</h1>
       </section>
+
       <section className="income-category-section">
+        {/* Progress indicator */}
         <div className="income-progress">
           <div className="progress-step">
             <span>1</span>
             <p>Income category</p>
           </div>
+
           <div
-            className={`progress-line ${
-              selectedCategory !== null ? "active" : ""
-            }`}
+            className={`progress-line ${currentStep >= 2 ? "active" : ""}`}
           ></div>
-          <div
-            className={`progress-step ${
-              selectedCategory !== null ? "active" : ""
-            }`}
-          >
+
+          <div className={`progress-step ${currentStep >= 2 ? "active" : ""}`}>
             <span>2</span>
             <p>Income Details</p>
           </div>
+
           <div
             className={`progress-line ${
-              selectedCategory !== null ? "half-active" : ""
+              currentStep >= 3
+                ? "active"
+                : currentStep === 2
+                ? "half-active"
+                : ""
             }`}
           ></div>
-          <div className="progress-step">
+
+          <div className={`progress-step ${currentStep >= 3 ? "active" : ""}`}>
             <span>3</span>
             <p>Review & Complete</p>
           </div>
         </div>
-        {selectedCategory !== null ? (
-          <IncomeDetails_2
-            selectedCategory={selectedCategory}
-            onBack={() => setSelectedCategory(null)}
-          />
-        ) : (
+
+        {/* STEP 1: Select income category */}
+        {currentStep === 1 ? (
           <>
             <div className="income-category-header">
               <h2>Select an income category</h2>
@@ -152,11 +157,15 @@ export default function IncomeCategorySelection_1() {
             <div className="income-category-grid">
               {incomeCategories.map((category) => {
                 const Icon = category.icon;
+
                 return (
                   <div
                     className="income-category-card"
                     key={category.id}
-                    onClick={() => setSelectedCategory(category)}
+                    onClick={() => {
+                      setSelectedCategory(category);
+                      setCurrentStep(2);
+                    }}
                   >
                     <span
                       className="income-category-icon"
@@ -167,10 +176,12 @@ export default function IncomeCategorySelection_1() {
                     >
                       <Icon size={28} />
                     </span>
+
                     <div className="income-category-content">
                       <h3>{category.name}</h3>
                       <p>{category.description}</p>
                     </div>
+
                     <div>
                       <ChevronRight />
                     </div>
@@ -179,6 +190,16 @@ export default function IncomeCategorySelection_1() {
               })}
             </div>
           </>
+        ) : currentStep === 2 ? (
+          /* STEP 2: Enter income details */
+          <IncomeDetails_2
+            selectedCategory={selectedCategory}
+            onBack={() => setCurrentStep(1)}
+            onNext={() => setCurrentStep(3)}
+          />
+        ) : (
+          /* STEP 3: Review income */
+          <IncomeReview_3 />
         )}
       </section>
     </div>

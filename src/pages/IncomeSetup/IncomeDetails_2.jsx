@@ -2,7 +2,7 @@ import "./IncomeDetails_2.css";
 import { ArrowLeftRight, ArrowLeft, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
-export default function IncomeDetails_2({ selectedCategory, onBack }) {
+export default function IncomeDetails_2({ selectedCategory, onBack, onNext }) {
   const Icon = selectedCategory.icon;
   const [sourceName, setSourceName] = useState("");
   const [incomeAmount, setIncomeAmount] = useState("");
@@ -108,7 +108,7 @@ export default function IncomeDetails_2({ selectedCategory, onBack }) {
             <ArrowLeft size={16} />
             Back
           </button>
-          <button type="button" className="save-btn" onClick={onBack}>
+          <button type="button" className="save-btn" onClick={onNext}>
             <ArrowRight size={16} />
             Save & Continue
           </button>
