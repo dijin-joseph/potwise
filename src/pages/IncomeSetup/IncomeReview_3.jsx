@@ -1,5 +1,5 @@
 import "./IncomeReview_3.css";
-import { ClipboardCheck } from "lucide-react";
+import { ClipboardCheck, Pencil, Trash2 } from "lucide-react";
 
 export default function IncomeReview_3() {
   return (
@@ -27,9 +27,16 @@ export default function IncomeReview_3() {
             <li>Frequency</li>
             <li>Start Date</li>
             <li>End Date</li>
-            <li>
-              <button>Edit</button>
-              <button>Edit</button>
+            <li className="income-actions">
+              <button type="button" className="income-edit-btn">
+                <Pencil size={16} />
+                Edit
+              </button>
+
+              <button type="button" className="income-remove-btn">
+                <Trash2 size={16} />
+                Remove
+              </button>
             </li>
           </ul>
         </div>
