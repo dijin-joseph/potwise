@@ -106,7 +106,13 @@ export default function IncomeCategorySelection_1() {
   const [incomeSources, setIncomeSources] = useState([]);
 
   function handleSaveIncome(incomeData) {
-    setIncomeSources((previousSources) => [...previousSources, incomeData]);
+    const newIncome = {
+      ...incomeData,
+      category: selectedCategory,
+    };
+
+    setIncomeSources((previousSources) => [...previousSources, newIncome]);
+
     setCurrentStep(3);
   }
 
@@ -205,7 +211,7 @@ export default function IncomeCategorySelection_1() {
           />
         ) : (
           /* STEP 3: Review income */
-          <IncomeReview_3 />
+          <IncomeReview_3 incomeSources={incomeSources} />
         )}
       </section>
     </div>

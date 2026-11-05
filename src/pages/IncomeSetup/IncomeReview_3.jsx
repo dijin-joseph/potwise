@@ -1,7 +1,8 @@
 import "./IncomeReview_3.css";
 import { ClipboardCheck, Pencil, Trash2 } from "lucide-react";
 
-export default function IncomeReview_3() {
+export default function IncomeReview_3({ incomeSources }) {
+  console.log("Income sources in review:", incomeSources);
   return (
     <div className="review-container">
       <div className="review-header">
