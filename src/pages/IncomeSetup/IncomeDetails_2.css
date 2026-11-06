@@ -182,7 +182,7 @@
   align-items: center;
   justify-content: flex-end;
   gap: 12px;
-  margin-top: 36px;
+  margin-top: 25px;
 }
 
 .back-btn,
@@ -313,5 +313,199 @@
     flex: 1;
     padding: 0 12px;
     font-size: 12px;
+  }
+}
+
+/* ==========================================
+   INCOME FREQUENCY SECTION
+========================================== */
+
+.income-frequency-section {
+  margin-top: 24px;
+  padding: 20px;
+  background-color: #f4fbf8;
+  border: 1px solid #d1eee1;
+  border-radius: 12px;
+}
+
+.income-frequency-top {
+  display: grid;
+  grid-template-columns: 0.8fr 2.2fr;
+  align-items: center;
+  gap: 24px;
+}
+
+/* ==========================================
+   SECTION HEADING
+========================================== */
+
+.income-frequency-intro h3 {
+  margin: 0 0 6px;
+  font-size: 17px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.income-frequency-intro p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #64748b;
+}
+
+/* ==========================================
+   FREQUENCY OPTIONS
+========================================== */
+
+.income-frequency-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.frequency-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 86px;
+  padding: 16px;
+  background-color: #ffffff;
+  border: 1.5px solid #d6e0eb;
+  border-radius: 10px;
+  cursor: pointer;
+
+  transition: border-color 0.2s ease, background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.frequency-option:hover {
+  border-color: #059669;
+  background-color: #f0fdf4;
+}
+
+/* SELECTED OPTION */
+
+.frequency-option.selected {
+  background-color: #f0fdf4;
+  border: 2px solid #059669;
+}
+
+.frequency-option:focus-within {
+  outline: 2px solid #34d399;
+  outline-offset: 2px;
+}
+
+/* ==========================================
+   RADIO BUTTON
+========================================== */
+
+.frequency-option input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  flex-shrink: 0;
+  accent-color: #059669;
+  cursor: pointer;
+}
+
+/* ==========================================
+   ICONS
+========================================== */
+
+.frequency-icon {
+  flex-shrink: 0;
+  color: #334155;
+}
+
+.frequency-option.selected .frequency-icon {
+  color: #059669;
+}
+
+/* ==========================================
+   OPTION TEXT
+========================================== */
+
+.frequency-option-text {
+  min-width: 0;
+}
+
+.frequency-option-text h4 {
+  margin: 0 0 5px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.frequency-option-text p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #64748b;
+}
+
+/* ==========================================
+   INFORMATION MESSAGE
+========================================== */
+
+.income-frequency-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 18px;
+  padding: 13px 16px;
+  background-color: #e5f6ef;
+  border-radius: 9px;
+  color: #047857;
+}
+
+.income-frequency-info svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.income-frequency-info p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #334155;
+}
+
+.income-frequency-info strong {
+  color: #0f172a;
+  margin-right: 4px;
+}
+
+/* ==========================================
+   RESPONSIVE - TABLET
+========================================== */
+
+@media (max-width: 1100px) {
+  .income-frequency-top {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* ==========================================
+   RESPONSIVE - MOBILE
+========================================== */
+
+@media (max-width: 650px) {
+  .income-frequency-section {
+    padding: 16px;
+  }
+
+  .income-frequency-options {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .frequency-option {
+    min-height: 76px;
+    padding: 14px;
+  }
+
+  .income-frequency-info {
+    padding: 12px;
   }
 }

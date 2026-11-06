@@ -1,5 +1,12 @@
 import "./IncomeDetails_2.css";
-import { ArrowLeftRight, ArrowLeft, ArrowRight } from "lucide-react";
+import {
+  ArrowLeftRight,
+  ArrowLeft,
+  ArrowRight,
+  CalendarSync,
+  Layers,
+  Info,
+} from "lucide-react";
 import { useState } from "react";
 
 export default function IncomeDetails_2({
@@ -36,6 +43,7 @@ export default function IncomeDetails_2({
       sourceName: sourceName.trim(),
       incomeAmount,
       startDate,
+      incomeFrequency,
     };
 
     onNext(incomeData);
@@ -46,8 +54,12 @@ export default function IncomeDetails_2({
       sourceName,
       incomeAmount,
       startDate,
+      incomeFrequency,
     });
   }
+  const [incomeFrequency, setIncomeFrequency] = useState(
+    initialData?.incomeFrequency ?? "recurring"
+  );
   return (
     <>
       <div className="income-title">
@@ -96,7 +108,11 @@ export default function IncomeDetails_2({
 
         <div className="income-form-grid">
           <div className="income-form-field">
-            <label htmlFor="incomeSource">Monthly Income (After Tax)</label>
+            <label htmlFor="incomeSource">
+              {incomeFrequency === "recurring"
+                ? "Monthly Income (After Tax)"
+                : "One-time Income (After Tax)"}
+            </label>
 
             <div className="income-field-with-icon">
               <span className="income-pound-symbol">£</span>
@@ -115,7 +131,7 @@ export default function IncomeDetails_2({
           </div>
 
           <div className="income-form-field">
-            <label htmlFor="startDate">Start Date (Optional)</label>
+            <label htmlFor="startDate">Pay Date (Optional)</label>
 
             <input
               id="startDate"
@@ -126,6 +142,86 @@ export default function IncomeDetails_2({
             />
 
             <p>Choose today or a future date.</p>
+          </div>
+        </div>
+
+        {/* ========================================
+    INCOME FREQUENCY
+======================================== */}
+
+        <div className="income-frequency-section">
+          <div className="income-frequency-top">
+            <div className="income-frequency-intro">
+              <h3>Income Frequency</h3>
+              <p>
+                Choose whether this income repeats each month or is a one-time
+                payment.
+              </p>
+            </div>
+
+            <div className="income-frequency-options">
+              {/* RECURRING MONTHLY */}
+              <label
+                className={`frequency-option ${
+                  incomeFrequency === "recurring" ? "selected" : ""
+                }`}
+              >
+                <input
+                  type="radio"
+                  name="incomeFrequency"
+                  value="recurring"
+                  checked={incomeFrequency === "recurring"}
+                  onChange={(event) => setIncomeFrequency(event.target.value)}
+                />
+
+                <CalendarSync size={28} className="frequency-icon" />
+
+                <div className="frequency-option-text">
+                  <h4>Recurring Monthly</h4>
+                  <p>Repeats every month from the selected start date.</p>
+                </div>
+              </label>
+
+              {/* ONE-TIME INCOME */}
+              <label
+                className={`frequency-option ${
+                  incomeFrequency === "one-time" ? "selected" : ""
+                }`}
+              >
+                <input
+                  type="radio"
+                  name="incomeFrequency"
+                  value="one-time"
+                  checked={incomeFrequency === "one-time"}
+                  onChange={(event) => setIncomeFrequency(event.target.value)}
+                />
+
+                <Layers size={28} className="frequency-icon" />
+
+                <div className="frequency-option-text">
+                  <h4>One-time (Non-recurring)</h4>
+                  <p>A single payment that doesn't repeat.</p>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          {/* INFORMATION MESSAGE */}
+          <div className="income-frequency-info">
+            <Info size={19} />
+
+            {incomeFrequency === "recurring" ? (
+              <p>
+                <strong>How it works:</strong> This income is scheduled every
+                month based on your selected start date. You can edit or remove
+                it anytime.
+              </p>
+            ) : (
+              <p>
+                <strong>How it works:</strong> This is a one-time income payment
+                and will not repeat in future months.
+              </p>
+            )}
           </div>
         </div>
 

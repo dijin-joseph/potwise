@@ -102,6 +102,20 @@ export default function IncomeReview_3({
                   </div>
                 </li>
 
+                <li className="income-frequency-cell">
+                  <span
+                    className={`income-frequency-badge ${
+                      income.incomeFrequency === "recurring"
+                        ? "recurring"
+                        : "one-time"
+                    }`}
+                  >
+                    {income.incomeFrequency === "recurring"
+                      ? "Recurring Monthly"
+                      : "One-time"}
+                  </span>
+                </li>
+
                 <li className="income-actions">
                   <button
                     type="button"
@@ -126,7 +140,7 @@ export default function IncomeReview_3({
           })}
         </div>
 
-        <div className="add-income-section">
+        <div className="add-income-section" onClick={onAddAnother}>
           <div className="add-income-info">
             <span className="add-income-icon">
               <Plus size={28} />

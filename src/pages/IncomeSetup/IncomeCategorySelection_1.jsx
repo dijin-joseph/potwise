@@ -152,6 +152,7 @@ export default function IncomeCategorySelection_1() {
       sourceName: incomeToEdit.sourceName,
       incomeAmount: incomeToEdit.incomeAmount,
       startDate: incomeToEdit.startDate,
+      incomeFrequency: incomeToEdit.incomeFrequency,
     });
     setCurrentStep(2);
   }
