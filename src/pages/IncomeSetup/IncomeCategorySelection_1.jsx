@@ -156,6 +156,12 @@ export default function IncomeCategorySelection_1() {
     setCurrentStep(2);
   }
 
+  function handleRemoveIncome(indexToRemove) {
+    setIncomeSources((previousSources) =>
+      previousSources.filter((income, index) => index !== indexToRemove)
+    );
+  }
+
   function handleChangeCategory(formData) {
     setIncomeDraft(formData);
     setCurrentStep(1);
@@ -163,10 +169,6 @@ export default function IncomeCategorySelection_1() {
 
   return (
     <div className="income-setup-page">
-      <section className="income-intro">
-        <h1>Set up your income</h1>
-      </section>
-
       <section className="income-category-section">
         {/* Progress indicator */}
         <div className="income-progress">
@@ -264,6 +266,7 @@ export default function IncomeCategorySelection_1() {
             onAddAnother={handleAddAnother}
             onBack={() => setCurrentStep(2)}
             onEdit={handleEditIncome}
+            onRemove={handleRemoveIncome}
           />
         )}
       </section>

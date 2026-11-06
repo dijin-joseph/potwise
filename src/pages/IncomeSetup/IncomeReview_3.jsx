@@ -16,6 +16,7 @@ export default function IncomeReview_3({
   onBack,
   onComplete,
   onEdit,
+  onRemove,
 }) {
   // All configured income amounts are now monthly.
   const totalMonthlyIncome = incomeSources.reduce((total, income) => {
@@ -111,7 +112,11 @@ export default function IncomeReview_3({
                     Edit
                   </button>
 
-                  <button type="button" className="income-remove-btn">
+                  <button
+                    type="button"
+                    className="income-remove-btn"
+                    onClick={() => onRemove(index)}
+                  >
                     <Trash2 size={16} />
                     Remove
                   </button>
