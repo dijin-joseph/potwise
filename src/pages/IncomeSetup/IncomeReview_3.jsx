@@ -16,23 +16,27 @@ export default function IncomeReview_3({
   onBack,
   onComplete,
 }) {
+  // All configured income amounts are now monthly.
   const totalMonthlyIncome = incomeSources.reduce((total, income) => {
-    const amount = Number(income.incomeAmount) || 0;
-
-    if (income.frequency === "Monthly") {
-      return total + amount;
-    }
-
-    if (income.frequency === "Weekly") {
-      return total + (amount * 52) / 12;
-    }
-
-    if (income.frequency === "Daily") {
-      return total + (amount * 365) / 12;
-    }
-
-    return total;
+    return total + (Number(income.incomeAmount) || 0);
   }, 0);
+
+  const formatCurrency = (amount) => {
+    return Number(amount).toLocaleString("en-GB", {
+      style: "currency",
+      currency: "GBP",
+    });
+  };
+
+  const formatDate = (date) => {
+    if (!date) return "—";
+
+    return new Date(`${date}T00:00:00`).toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+  };
 
   return (
     <div className="review-container">
@@ -44,14 +48,21 @@ export default function IncomeReview_3({
         <div className="income-title-content">
           <h2>Review Your Income</h2>
           <p>
-            Check the details of your income sources. You can add another
+            Review your configured monthly income sources. You can add another
             source, edit or remove one before completing.
           </p>
         </div>
       </div>
 
       <div className="income-review-content">
-        <h2>Your Income Sources</h2>
+        <div className="income-review-heading">
+          <h2>Your Income Sources</h2>
+          <span className="income-source-count">
+            {incomeSources.length}{" "}
+            {incomeSources.length === 1 ? "source" : "sources"} added
+          </span>
+        </div>
+
         <div className="income-review-container">
           {incomeSources.map((income, index) => {
             const Icon = income.category.icon;
@@ -71,56 +82,21 @@ export default function IncomeReview_3({
 
                   <div>
                     <h3>{income.category.name}</h3>
-                    <p>{income.sourceName}</p>
+                    <p>{income.sourceName || "Unnamed source"}</p>
                   </div>
                 </li>
+
                 <li>
                   <div>
-                    <h3>
-                      {Number(income.incomeAmount).toLocaleString("en-GB", {
-                        style: "currency",
-                        currency: "GBP",
-                      })}
-                    </h3>
-                    <p>After Tax</p>
+                    <h3>{formatCurrency(income.incomeAmount)}</h3>
+                    <p>Monthly · After Tax</p>
                   </div>
                 </li>
+
                 <li>
                   <div>
-                    <h3>{income.frequency}</h3>
-                    <p>Frequency</p>
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <h3>
-                      {income.startDate
-                        ? new Date(
-                            `${income.startDate}T00:00:00`
-                          ).toLocaleDateString("en-GB", {
-                            day: "2-digit",
-                            month: "short",
-                            year: "numeric",
-                          })
-                        : "—"}
-                    </h3>
+                    <h3>{formatDate(income.startDate)}</h3>
                     <p>Start Date</p>
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <h3>
-                      {income.endDate
-                        ? new Date(
-                            `${income.endDate}T00:00:00`
-                          ).toLocaleDateString("en-GB", {
-                            day: "2-digit",
-                            month: "short",
-                            year: "numeric",
-                          })
-                        : "—"}
-                    </h3>
-                    <p>End Date</p>
                   </div>
                 </li>
 
@@ -139,6 +115,7 @@ export default function IncomeReview_3({
             );
           })}
         </div>
+
         <div className="add-income-section">
           <div className="add-income-info">
             <span className="add-income-icon">
@@ -148,8 +125,8 @@ export default function IncomeReview_3({
             <div className="add-income-text">
               <h3>Add Another Income Source</h3>
               <p>
-                Include additional income such as a part-time job, rental income
-                or other source.
+                Include additional monthly income such as a part-time job,
+                rental income or other source.
               </p>
             </div>
           </div>
@@ -164,6 +141,7 @@ export default function IncomeReview_3({
             <ArrowRight size={20} />
           </button>
         </div>
+
         <div className="income-monthly-summary">
           <div className="income-summary-info">
             <span className="income-summary-icon">
@@ -173,16 +151,14 @@ export default function IncomeReview_3({
             <div className="income-summary-text">
               <h3>Total Monthly Income</h3>
               <p>
-                Monthly equivalent of your configured after-tax income sources.
+                Total configured monthly income after tax. This is not a record
+                of payments received.
               </p>
             </div>
           </div>
 
           <div className="income-summary-amount">
-            {totalMonthlyIncome.toLocaleString("en-GB", {
-              style: "currency",
-              currency: "GBP",
-            })}
+            {formatCurrency(totalMonthlyIncome)}
           </div>
         </div>
       </div>

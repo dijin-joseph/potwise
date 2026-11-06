@@ -6,30 +6,28 @@
   display: flex;
   flex-direction: column;
   gap: 0;
+  margin-top: 30px;
   background-color: #ffffff;
   border-radius: 10px;
-  margin-top: 30px;
 }
 
 .review-header {
   display: flex;
   align-items: center;
   gap: 14px;
-  margin-top: 12px;
   padding: 12px 20px;
+  margin-top: 12px;
   background-color: #ffffff;
   border-radius: 10px 10px 0 0;
 }
 
-.income-title-icon {
+.review-header .income-title-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 48px;
   height: 48px;
   flex-shrink: 0;
-
   background-color: #dcfce7;
   color: #059669;
   border-radius: 10px;
@@ -42,7 +40,6 @@
   margin: 0;
   padding: 10px 20px 12px;
   background-color: #ffffff;
-  border-radius: 0;
 }
 
 .income-review-content h2 {
@@ -51,7 +48,31 @@
 }
 
 /* ========================================
-   INCOME SOURCE LIST
+   INCOME SOURCES HEADING
+======================================== */
+
+.income-review-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.income-source-count {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  background-color: #dcfce7;
+  color: #065f46;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ========================================
+   INCOME SOURCES LIST
+   Maximum 3 visible rows
 ======================================== */
 
 .income-review-container {
@@ -64,15 +85,15 @@
   border: 1px solid #ececec;
   border-radius: 10px;
   scrollbar-width: thin;
-  scrollbar-color: #007f44 #f1f5f9;
+  scrollbar-color: #059669 #f1f5f9;
 }
 
 .income-review-container ul {
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr 1.5fr;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
   align-items: center;
   min-height: 70px;
-  min-width: 950px;
+  min-width: 800px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -86,27 +107,26 @@
 
 .income-review-container li {
   position: relative;
-
   display: flex;
   align-items: center;
   justify-content: flex-start;
-
   min-width: 0;
   padding: 8px 14px;
 }
 
+/* Short vertical separators */
+
 .income-review-container li:not(:last-child)::after {
   content: "";
-
   position: absolute;
   right: 0;
   top: 20%;
-
   width: 1px;
   height: 60%;
-
   background-color: #e2e8f0;
 }
+
+/* Income category and icon */
 
 .income-review-container li:first-child {
   gap: 12px;
@@ -120,16 +140,19 @@
 
 .income-review-container li p {
   margin: 3px 0 0;
-
   font-size: 12px;
   font-weight: 400;
   color: #64748b;
 }
 
 .income-review-container .income-category-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 42px;
   height: 42px;
   flex-shrink: 0;
+  border-radius: 10px;
 }
 
 /* ========================================
@@ -148,20 +171,17 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-
   padding: 8px 10px;
-
   border-radius: 8px;
-
   font-family: inherit;
   font-size: 13px;
   font-weight: 600;
-
   white-space: nowrap;
   cursor: pointer;
-
   transition: background-color 0.2s ease;
 }
+
+/* Edit button */
 
 .income-edit-btn {
   background-color: #ffffff;
@@ -172,6 +192,8 @@
 .income-edit-btn:hover {
   background-color: #f1f5f9;
 }
+
+/* Remove button */
 
 .income-remove-btn {
   background-color: #fffafa;
@@ -192,10 +214,8 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-
   margin-top: 12px;
   padding: 10px 16px;
-
   background-color: #f0fdf4;
   border: 2px solid #059669;
   border-radius: 12px;
@@ -212,11 +232,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 42px;
   height: 42px;
   flex-shrink: 0;
-
   background-color: #047857;
   color: #ffffff;
   border-radius: 10px;
@@ -224,7 +242,6 @@
 
 .add-income-text h3 {
   margin: 0;
-
   font-size: 16px;
   font-weight: 700;
   color: #065f46;
@@ -232,34 +249,29 @@
 
 .add-income-text p {
   margin: 3px 0 0;
-
   font-size: 12px;
   font-weight: 400;
   line-height: 1.4;
   color: #475569;
 }
 
+/* Add income action button */
+
 .add-income-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-
   padding: 10px 14px;
   flex-shrink: 0;
-
   background-color: #047857;
   color: #ffffff;
-
   border: none;
   border-radius: 10px;
-
   font-family: inherit;
   font-size: 13px;
   font-weight: 600;
-
   cursor: pointer;
-
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
@@ -278,7 +290,7 @@
 }
 
 /* ========================================
-   MONTHLY INCOME SUMMARY
+   TOTAL MONTHLY INCOME SUMMARY
 ======================================== */
 
 .income-monthly-summary {
@@ -286,10 +298,8 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-
   margin-top: 12px;
   padding: 10px 16px;
-
   background-color: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 12px;
@@ -306,11 +316,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 42px;
   height: 42px;
   flex-shrink: 0;
-
   background-color: #dcfce7;
   color: #047857;
   border-radius: 10px;
@@ -318,7 +326,6 @@
 
 .income-summary-text h3 {
   margin: 0;
-
   font-size: 16px;
   font-weight: 700;
   color: #0f172a;
@@ -326,7 +333,6 @@
 
 .income-summary-text p {
   margin: 3px 0 0;
-
   font-size: 12px;
   line-height: 1.4;
   color: #64748b;
@@ -335,12 +341,9 @@
 .income-summary-amount {
   min-width: 170px;
   padding: 9px 18px;
-
   background-color: #dcfce7;
   color: #065f46;
-
   border-radius: 10px;
-
   text-align: center;
   font-size: 22px;
   font-weight: 700;
@@ -363,8 +366,6 @@
   padding: 12px 20px;
   background-color: #ffffff;
   border-radius: 0 0 10px 10px;
-
-  box-shadow: none;
 }
 
 .income-review-footer button {
@@ -372,17 +373,15 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-
   padding: 9px 16px;
-
   border-radius: 10px;
-
   font-family: inherit;
   font-size: 14px;
   font-weight: 600;
-
   cursor: pointer;
 }
+
+/* Back button */
 
 .income-review-back-btn {
   background-color: #ffffff;
@@ -393,6 +392,8 @@
 .income-review-back-btn:hover {
   background-color: #f1f5f9;
 }
+
+/* Complete & Save button */
 
 .income-review-complete-btn {
   background-color: #047857;
@@ -430,6 +431,7 @@
 
   .income-summary-amount {
     width: 100%;
+    min-width: 0;
   }
 }
 
@@ -443,7 +445,7 @@
     gap: 10px;
   }
 
-  .income-title-icon {
+  .review-header .income-title-icon {
     width: 42px;
     height: 42px;
   }
@@ -454,6 +456,14 @@
 
   .income-review-content h2 {
     font-size: 17px;
+  }
+
+  .income-review-heading {
+    flex-wrap: wrap;
+  }
+
+  .income-source-count {
+    font-size: 11px;
   }
 
   .add-income-section {
