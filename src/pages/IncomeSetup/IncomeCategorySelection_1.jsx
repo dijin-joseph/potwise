@@ -104,20 +104,60 @@ export default function IncomeCategorySelection_1() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [currentStep, setCurrentStep] = useState(1);
   const [incomeSources, setIncomeSources] = useState([]);
+  const [editingIndex, setEditingIndex] = useState(null);
+  const [incomeDraft, setIncomeDraft] = useState(null);
 
   function handleSaveIncome(incomeData) {
-    const newIncome = {
+    const updatedIncome = {
       ...incomeData,
       category: selectedCategory,
     };
 
-    setIncomeSources((previousSources) => [...previousSources, newIncome]);
+    if (editingIndex !== null) {
+      // Update an existing income source
+      setIncomeSources((previousSources) =>
+        previousSources.map((income, index) =>
+          index === editingIndex ? updatedIncome : income
+        )
+      );
+    } else {
+      // Add a new income source
+      setIncomeSources((previousSources) => [
+        ...previousSources,
+        updatedIncome,
+      ]);
+    }
 
+    // Reset editing and temporary form data
+    setEditingIndex(null);
+    setIncomeDraft(null);
+
+    // Navigate to the Review page
     setCurrentStep(3);
   }
 
   function handleAddAnother() {
+    setEditingIndex(null);
     setSelectedCategory(null);
+    setIncomeDraft(null);
+    setCurrentStep(1);
+  }
+
+  function handleEditIncome(index) {
+    const incomeToEdit = incomeSources[index];
+
+    setEditingIndex(index);
+    setSelectedCategory(incomeToEdit.category);
+    setIncomeDraft({
+      sourceName: incomeToEdit.sourceName,
+      incomeAmount: incomeToEdit.incomeAmount,
+      startDate: incomeToEdit.startDate,
+    });
+    setCurrentStep(2);
+  }
+
+  function handleChangeCategory(formData) {
+    setIncomeDraft(formData);
     setCurrentStep(1);
   }
 
@@ -209,17 +249,21 @@ export default function IncomeCategorySelection_1() {
           </>
         ) : currentStep === 2 ? (
           /* STEP 2: Enter income details */
+
           <IncomeDetails_2
             selectedCategory={selectedCategory}
-            onBack={() => setCurrentStep(1)}
+            initialData={incomeDraft}
+            onBack={handleChangeCategory}
             onNext={handleSaveIncome}
           />
         ) : (
           /* STEP 3: Review income */
+
           <IncomeReview_3
             incomeSources={incomeSources}
             onAddAnother={handleAddAnother}
             onBack={() => setCurrentStep(2)}
+            onEdit={handleEditIncome}
           />
         )}
       </section>

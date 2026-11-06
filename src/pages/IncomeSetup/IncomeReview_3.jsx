@@ -15,6 +15,7 @@ export default function IncomeReview_3({
   onAddAnother,
   onBack,
   onComplete,
+  onEdit,
 }) {
   // All configured income amounts are now monthly.
   const totalMonthlyIncome = incomeSources.reduce((total, income) => {
@@ -101,7 +102,11 @@ export default function IncomeReview_3({
                 </li>
 
                 <li className="income-actions">
-                  <button type="button" className="income-edit-btn">
+                  <button
+                    type="button"
+                    className="income-edit-btn"
+                    onClick={() => onEdit(index)}
+                  >
                     <Pencil size={16} />
                     Edit
                   </button>

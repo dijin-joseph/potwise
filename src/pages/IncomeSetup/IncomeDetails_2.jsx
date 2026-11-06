@@ -2,13 +2,21 @@ import "./IncomeDetails_2.css";
 import { ArrowLeftRight, ArrowLeft, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
-export default function IncomeDetails_2({ selectedCategory, onBack, onNext }) {
+export default function IncomeDetails_2({
+  selectedCategory,
+  initialData,
+  onBack,
+  onNext,
+}) {
   const Icon = selectedCategory.icon;
 
-  const [sourceName, setSourceName] = useState("");
-  const [incomeAmount, setIncomeAmount] = useState("");
-  const [startDate, setStartDate] = useState("");
+  const [sourceName, setSourceName] = useState(initialData?.sourceName ?? "");
 
+  const [incomeAmount, setIncomeAmount] = useState(
+    initialData?.incomeAmount ?? ""
+  );
+
+  const [startDate, setStartDate] = useState(initialData?.startDate ?? "");
   // Today's date in local YYYY-MM-DD format.
   const today = new Date();
   const minDate = [
@@ -33,6 +41,13 @@ export default function IncomeDetails_2({ selectedCategory, onBack, onNext }) {
     onNext(incomeData);
   }
 
+  function handleBackToCategory() {
+    onBack({
+      sourceName,
+      incomeAmount,
+      startDate,
+    });
+  }
   return (
     <>
       <div className="income-title">
@@ -51,7 +66,11 @@ export default function IncomeDetails_2({ selectedCategory, onBack, onNext }) {
           <p>{selectedCategory.description}</p>
         </div>
 
-        <button type="button" className="change-category-btn" onClick={onBack}>
+        <button
+          type="button"
+          className="change-category-btn"
+          onClick={handleBackToCategory}
+        >
           <ArrowLeftRight size={16} />
           Change Income Category
         </button>
@@ -111,7 +130,11 @@ export default function IncomeDetails_2({ selectedCategory, onBack, onNext }) {
         </div>
 
         <div className="income-form-actions">
-          <button type="button" className="back-btn" onClick={onBack}>
+          <button
+            type="button"
+            className="back-btn"
+            onClick={handleBackToCategory}
+          >
             <ArrowLeft size={16} />
             Back
           </button>
