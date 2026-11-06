@@ -10,31 +10,30 @@ import {
   Coins,
 } from "lucide-react";
 
-const totalMonthlyIncome = incomeSources.reduce((total, income) => {
-  const amount = Number(income.incomeAmount) || 0;
-
-  if (income.frequency === "Monthly") {
-    return total + amount;
-  }
-
-  if (income.frequency === "Weekly") {
-    return total + (amount * 52) / 12;
-  }
-
-  if (income.frequency === "Daily") {
-    return total + (amount * 365) / 12;
-  }
-
-  return total;
-}, 0);
-
 export default function IncomeReview_3({
   incomeSources,
   onAddAnother,
   onBack,
   onComplete,
 }) {
-  console.log("Income sources in review:", incomeSources);
+  const totalMonthlyIncome = incomeSources.reduce((total, income) => {
+    const amount = Number(income.incomeAmount) || 0;
+
+    if (income.frequency === "Monthly") {
+      return total + amount;
+    }
+
+    if (income.frequency === "Weekly") {
+      return total + (amount * 52) / 12;
+    }
+
+    if (income.frequency === "Daily") {
+      return total + (amount * 365) / 12;
+    }
+
+    return total;
+  }, 0);
+
   return (
     <div className="review-container">
       <div className="review-header">
@@ -201,6 +200,7 @@ export default function IncomeReview_3({
         <button
           type="button"
           className="income-review-complete-btn"
+          disabled={!onComplete}
           onClick={onComplete}
         >
           <Check size={20} />
