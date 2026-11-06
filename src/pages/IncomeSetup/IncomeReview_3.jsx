@@ -1,7 +1,39 @@
 import "./IncomeReview_3.css";
-import { ClipboardCheck, Pencil, Trash2 } from "lucide-react";
+import {
+  ClipboardCheck,
+  Pencil,
+  Trash2,
+  Plus,
+  ArrowRight,
+  ArrowLeft,
+  Check,
+  Coins,
+} from "lucide-react";
 
-export default function IncomeReview_3({ incomeSources }) {
+const totalMonthlyIncome = incomeSources.reduce((total, income) => {
+  const amount = Number(income.incomeAmount) || 0;
+
+  if (income.frequency === "Monthly") {
+    return total + amount;
+  }
+
+  if (income.frequency === "Weekly") {
+    return total + (amount * 52) / 12;
+  }
+
+  if (income.frequency === "Daily") {
+    return total + (amount * 365) / 12;
+  }
+
+  return total;
+}, 0);
+
+export default function IncomeReview_3({
+  incomeSources,
+  onAddAnother,
+  onBack,
+  onComplete,
+}) {
   console.log("Income sources in review:", incomeSources);
   return (
     <div className="review-container">
@@ -108,6 +140,72 @@ export default function IncomeReview_3({ incomeSources }) {
             );
           })}
         </div>
+        <div className="add-income-section">
+          <div className="add-income-info">
+            <span className="add-income-icon">
+              <Plus size={28} />
+            </span>
+
+            <div className="add-income-text">
+              <h3>Add Another Income Source</h3>
+              <p>
+                Include additional income such as a part-time job, rental income
+                or other source.
+              </p>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            className="add-income-btn"
+            onClick={onAddAnother}
+          >
+            <Plus size={20} />
+            <span>Add Income Source</span>
+            <ArrowRight size={20} />
+          </button>
+        </div>
+        <div className="income-monthly-summary">
+          <div className="income-summary-info">
+            <span className="income-summary-icon">
+              <Coins size={28} />
+            </span>
+
+            <div className="income-summary-text">
+              <h3>Total Monthly Income</h3>
+              <p>
+                Monthly equivalent of your configured after-tax income sources.
+              </p>
+            </div>
+          </div>
+
+          <div className="income-summary-amount">
+            {totalMonthlyIncome.toLocaleString("en-GB", {
+              style: "currency",
+              currency: "GBP",
+            })}
+          </div>
+        </div>
+      </div>
+
+      <div className="income-review-footer">
+        <button
+          type="button"
+          className="income-review-back-btn"
+          onClick={onBack}
+        >
+          <ArrowLeft size={20} />
+          Back
+        </button>
+
+        <button
+          type="button"
+          className="income-review-complete-btn"
+          onClick={onComplete}
+        >
+          <Check size={20} />
+          Complete & Save
+        </button>
       </div>
     </div>
   );

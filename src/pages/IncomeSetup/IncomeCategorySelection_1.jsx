@@ -116,6 +116,11 @@ export default function IncomeCategorySelection_1() {
     setCurrentStep(3);
   }
 
+  function handleAddAnother() {
+    setSelectedCategory(null);
+    setCurrentStep(1);
+  }
+
   return (
     <div className="income-setup-page">
       <section className="income-intro">
@@ -211,7 +216,11 @@ export default function IncomeCategorySelection_1() {
           />
         ) : (
           /* STEP 3: Review income */
-          <IncomeReview_3 incomeSources={incomeSources} />
+          <IncomeReview_3
+            incomeSources={incomeSources}
+            onAddAnother={handleAddAnother}
+            onBack={() => setCurrentStep(2)}
+          />
         )}
       </section>
     </div>
